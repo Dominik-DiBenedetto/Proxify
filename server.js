@@ -15,7 +15,7 @@ app.use(cors({
 }));
  
 // Proxy endpoints
-app.use('/*', createProxyMiddleware({
+app.use('https://proxify-blond.vercel.app/*/', createProxyMiddleware({
     changeOrigin: true,
     pathRewrite: {
         [`^/*/`]: '',
