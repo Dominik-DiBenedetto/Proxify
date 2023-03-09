@@ -19,6 +19,8 @@ app.use(express.urlencoded())
 // Proxy endpoints
 app.get('/proxy/:host/:target', (req, res) => {
     const target = req.params.target
+    const host = req.params.host
+    console.log({host, target})
     app.use(`${host}/`, createProxyMiddleware({
         target: target,
         changeOrigin: true,
