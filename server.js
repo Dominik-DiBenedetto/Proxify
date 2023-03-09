@@ -13,7 +13,7 @@ app.use(cors({
 app.use(express.urlencoded())
  
 // Proxy endpoints
-app.get('/proxy/:host/:target', (req, res) => {
+app.get('/proxy/:host/:target', (req, res, next) => {
     const target = req.params.target
     const host = req.params.host
     console.log({host, target})
@@ -26,3 +26,5 @@ app.get('/proxy/:host/:target', (req, res) => {
 //      }));
     res.send(`Target: ${target} \nHost: ${host}`)
 })
+
+app.listen(3000, 'localhost')
