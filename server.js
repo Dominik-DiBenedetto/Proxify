@@ -13,14 +13,20 @@ const app = express();
 app.use(cors({
     origin: '*',
 }));
+
+app.use(express.urlencoded())
  
 // Proxy endpoints
-app.use('https://proxify-blond.vercel.app/*/', createProxyMiddleware({
-    changeOrigin: true,
-    pathRewrite: {
-        [`^/*/`]: '',
-    },
- }));
+app.get('/proxy/:host/:target', (req, res) => {
+    const target = req.params.target
+    app.use(`${host}/`, createProxyMiddleware({
+        target: target,
+        changeOrigin: true,
+        pathRewrite: {
+            [`^/${host}`]: '',
+        },
+     }));
+}
  
  // Start the Proxy
 app.listen(PORT, HOST, () => {
