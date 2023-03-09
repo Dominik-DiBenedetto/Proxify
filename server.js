@@ -23,10 +23,10 @@ app.get('/proxy/:host/:target', (req, res) => {
         target: target,
         changeOrigin: true,
         pathRewrite: {
-            [`^/*/`]: '',
+            [`^/${host}`]: '',
         },
      }));
-}
+})
  
  // Start the Proxy
 app.listen(PORT, HOST, () => {
