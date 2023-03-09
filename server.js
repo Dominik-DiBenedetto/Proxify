@@ -24,4 +24,5 @@ app.get('/proxy/:host/:target', (req, res) => {
 //             [`^/${host}`]: '',
 //         },
 //      }));
+    res.send(`Target: ${target} \nHost: ${host}`)
 })
