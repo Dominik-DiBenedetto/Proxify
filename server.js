@@ -14,7 +14,7 @@ app.use(express.urlencoded())
  
 // Proxy endpoints
 app.get('/proxy/:host/:target', (req, res, next) => {
-    const target = req.url.split('/')[3]
+    const target = req.url.split('/')[3].replace('%22', '/')
     const host = req.params.host
     console.log({host, target})
     app.use(`${host}/`, createProxyMiddleware({
